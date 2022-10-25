@@ -15,7 +15,9 @@
             </article>
             <div v-else>
                 <div class="title">Task App</div>
-                <button @click="onClick()" class="button is-danger">Cerrar sesion</button>
+                <div class="cerrar">
+                    <button @click="onClick()" class="button is-danger">Cerrar sesion</button>
+                </div>
                 <br>
                 <br>
                 <!-- Poner un formulario con un textarea que nos permita poner mensajes al enviar el formulario -->
@@ -50,9 +52,12 @@ import { logOut } from "../api/index";
 
 import { useAuthStore } from '../store/index'
 import AddTask from "../components/AddTask.vue";
+import { onMounted } from "vue";
 
 
 const authStore = useAuthStore();
+
+
 
 const onClick = () => {
     logOut()
@@ -67,10 +72,12 @@ const onClick = () => {
 
 .title{
     text-align: center;
+
 }
 
-.is-danger{
-    margin-left: 100px
+.cerrar {
+    display: flex;
+    justify-content: center;
 }
 
 ul {

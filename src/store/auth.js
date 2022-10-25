@@ -21,5 +21,15 @@ export const useAuthStore = defineStore('auth', {
          this.isAuth = false;
          this.id = '';
         }
-    }
+    },
+    
+    persist: {
+        enabled: true,
+        strategies: [
+          {
+            key: "user",
+            storage: localStorage,
+          },
+        ],
+      },
 });

@@ -7,7 +7,7 @@
         <br><br>
         <input v-model="description" class="input " type="text" placeholder="e.g. make an app">
         <br><br>
-        <input type="submit" value="Add todo"  class="button is-link is-fullwidth">
+        <input type="submit" value="Add new task"  class="button is-link is-fullwidth">
     </form>
 </div>
 <br>
@@ -17,10 +17,11 @@
 <script setup>
 import { ref } from 'vue';
 import { useAuthStore } from '../store/auth'
-import { newTask } from "../api/index";
+import { newTask, getTasks } from "../api/index";
 import { onMounted } from "vue";
-import { login } from "../api"
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const title = ref('');
 const description = ref('');
 const authStore = useAuthStore();
@@ -29,12 +30,16 @@ const authStore = useAuthStore();
 
 const onSubmit = async () => {
 
-    const id = await login('sergioldm92@gmail.com', '12345678');
         newTask({
-            user_id: id,
-            title: title.value,
-            description: description.value
+        user_id: authStore.id,
+        title: title.value,
+        description: description.value
         });
+
+    title.value = '';
+    description.value = '';
+
+        //TODO HACER QUE CUANDO AÑADE UNA TASK SE ACTUALICEN LAS PENDIENTES
 
 };
 

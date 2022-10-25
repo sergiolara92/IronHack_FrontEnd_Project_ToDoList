@@ -59,8 +59,8 @@ export const getTasks = async () => {
     .from('Task')
     .select('*') //* ttrae todas las columnas
     .order('id', {ascending: false});
-    console.log(response);
     //TODO retornar la información de las task, ej. response.data....
+    return response.data
 };
 
 
