@@ -5,16 +5,23 @@
             <form @submit.prevent="onSubmit">
                 <div class="field">
                     <label class="label">Email</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                        </span>
                         <input v-model="email" class="input" type="email" placeholder="Email">
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Password</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                        </span>
                         <input v-model="password" class="input" type="password" placeholder="Password">
                     </div>
                 </div>
+
                 <div class="field">
                     <div class="control">
                         <button class="button is-link is-fullwidth" type="submit">Log in</button>
@@ -41,6 +48,7 @@ const authStore = useAuthStore();
 const name = ref('');
 const email = ref('');
 const password = ref('');
+
 
 const onSubmit = async () => {
     console.log('formulario enviado', email.value, password.value)
