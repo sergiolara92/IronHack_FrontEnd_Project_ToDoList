@@ -1,0 +1,1 @@
+import{m as r}from"./file_index.f5e12afa.js";const n=r("task",{state:()=>({tasks:[]}),actions:{setTask(){},updateTask(t,s){},deleteTask(t){},addTask(t){}}}),c=(t,s)=>{const a=t.__vccOpts||t;for(const[e,o]of s)a[e]=o;return a};export{c as _,n as u};

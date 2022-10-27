@@ -14,20 +14,41 @@
                 </div>
                 <div class="field">
                     <label class="label ">Password</label>
-                    <div class="control has-icons-left">
-                        <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                    <div class="control has-icons-left has-icons-right">
+
+                        <span v-if="!mostrar" @click="mostrar = true" class="icon is-small is-right is-clickable">
+                            <i v-if="!mostrar" class="fa-solid fa-eye"></i>
                         </span>
-                        <input v-model="password" class="input" type="password" placeholder="Password">
+
+                        <span v-if="mostrar" @click="mostrar = false" class="icon is-small is-right is-clickable">
+                            <i v-if="mostrar" class="fa-solid fa-eye-slash"></i>
+                         </span>
+
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input v-if="!mostrar" v-model="password" class="input" type="password" placeholder="Password">
+                        <input v-if="mostrar" v-model="password" class="input" type="text" placeholder="Password">
+
                     </div>
                 </div>
                 <div class="field">
                     <label class="label">Confirm password</label>
-                    <div class="control has-icons-left">
-                        <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                    <div class="control has-icons-left has-icons-right">
+
+                        <span v-if="!mostrar" @click="mostrar = true" class="icon is-small is-right is-clickable">
+                            <i v-if="!mostrar" class="fa-solid fa-eye"></i>
                         </span>
-                        <input v-model="confirm" class="input" type="password" placeholder="Repeat password">
+
+                        <span v-if="mostrar" @click="mostrar = false" class="icon is-small is-right is-clickable">
+                            <i v-if="mostrar" class="fa-solid fa-eye-slash"></i>
+                        </span>
+
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        <input v-if="!mostrar" v-model="confirm" class="input" type="password" placeholder="Password">
+                        <input v-if="mostrar" v-model="confirm" class="input" type="text" placeholder="Password">
                     </div>
                 </div>
                 <div class="field">
@@ -53,6 +74,7 @@ const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env
 const email = ref('');
 const password = ref('');
 const confirm = ref('');
+const mostrar = ref(false);
 
 const onSubmit = async () => {
     if (email.value == '') return alert('Please provide an email');
