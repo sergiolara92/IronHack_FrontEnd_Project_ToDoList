@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { trackSlotScopes } from "@vue/compiler-core";
 import { ref } from "vue";
 
 import { onMounted } from "vue";
@@ -23,6 +22,7 @@ import { onMounted } from "vue";
 import { login, getTasks } from "../api/index";
 
 import TaskCard from "../components/TaskCard.vue";
+
 
 const completedTasks = ref();
 

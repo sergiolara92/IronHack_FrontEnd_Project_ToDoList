@@ -49,7 +49,7 @@ const onSubmit = async () => {
 
         authStore.login(userData);
         // Nos redirige al home
-        router.push({ name: 'home' })
+        router.push({ name: 'alltasks' })
     }else{
         alert('incorrect Email or password ')
     }

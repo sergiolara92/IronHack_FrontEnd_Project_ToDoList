@@ -12,6 +12,10 @@ import { createClient } from '@supabase/supabase-js'
 
 import { login, newTask } from "./api/index";
 
+import {useAuthStore} from './store/auth'
+
+const authStore = useAuthStore()
+
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY)
 
 console.log(process.env.NODE_ENV);
@@ -86,16 +90,16 @@ console.log(supabase);
 //   const response = await supabase.auth.signOut();
 // }
 
-onMounted(async () => {
-  const id = await login('sergioldm92@gmail.com', '12345678');
-  newTask({
-    user_id: id,
-    title: 'Titulo',
-    description: 'Descripcion de otro task'
-  });
+// onMounted(async () => {
+//   const id = await login('sergioldm92@gmail.com', '12345678');
+//   newTask({
+//     user_id: id,
+//     title: 'Titulo',
+//     description: 'Descripcion de otro task'
+//   });
   
 
-});
+// });
 
 </script>
 <style scoped>

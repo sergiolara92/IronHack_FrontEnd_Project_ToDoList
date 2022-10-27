@@ -17,7 +17,6 @@ export const registro = async (newEmail, newPassword) => {
 
     console.log(result);
     return result, console.log('User created successfully!');
-  //TODO identificar el result y retornar lo que nos interesa
 };
 
 //LOGIN
@@ -59,7 +58,6 @@ export const getTasks = async () => {
     .from('Task')
     .select('*') //* ttrae todas las columnas
     .order('id', {ascending: false});
-    //TODO retornar la información de las task, ej. response.data....
     return response.data
 };
 
@@ -78,8 +76,28 @@ export const updateTask = async (taskId, task) => {
     .update(task)
     .eq('id', taskId); //columna de referencia, valor que coincide del cual queremos modificar el contenido
   
-    console.log(response);
+    console.log('tarea ' + taskId + ' modificada');
     //TODO identificar el resultado y retornar lo que nos interese. Por ejemplo true si ha ido bien o false si ha fallado
+};
+
+export const markUndone = async (taskId) => {
+  const response = await supabase
+  .from('Task')
+  .update({isDone: 'false'})
+  .eq('id', taskId); //columna de referencia, valor que coincide del cual queremos modificar el contenido
+
+  return console.log('task status changed succesfully!');
+  //TODO identificar el resultado y retornar lo que nos interese. Por ejemplo true si ha ido bien o false si ha fallado
+};
+
+export const markDone = async (taskId) => {
+  const response = await supabase
+  .from('Task')
+  .update({isDone: 'true'})
+  .eq('id', taskId); //columna de referencia, valor que coincide del cual queremos modificar el contenido
+
+  return console.log('task status changed succesfully!');
+  //TODO identificar el resultado y retornar lo que nos interese. Por ejemplo true si ha ido bien o false si ha fallado
 };
 
 
@@ -90,7 +108,7 @@ export const deleteTask = async (taskId) => {
     .delete()
     .eq('id', taskId); //columna, valor (borrara toda la fila que coincida con la columna id que tenga valor 7)
       //TODO identificar el resultado y retornar lo que nos interese. Por ejemplo true si ha ido bien o false si ha fallado
-    console.log(response);
+    return console.log('tarea ' + taskId + ' eliminada');
 };
 
 

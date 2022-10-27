@@ -92,6 +92,7 @@ li {
   margin-right: 10px;
 }
 
+
 a {
   color: black;
   padding: 0 8px;

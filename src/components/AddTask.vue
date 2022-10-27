@@ -20,6 +20,7 @@ import { useAuthStore } from '../store/auth'
 import { newTask, getTasks } from "../api/index";
 import { onMounted } from "vue";
 import { useRouter } from 'vue-router';
+import { useTaskStore } from "../store";
 
 const router = useRouter();
 const title = ref('');
@@ -28,18 +29,25 @@ const authStore = useAuthStore();
 
 
 
+
+
+const tasks = useTaskStore();
+
+
+
 const onSubmit = async () => {
 
-        newTask({
-        user_id: authStore.id,
-        title: title.value,
-        description: description.value
-        });
+    newTask({
+    user_id: authStore.id,
+    title: title.value,
+    description: description.value
+    });
 
     title.value = '';
     description.value = '';
 
-        //TODO HACER QUE CUANDO AÑADE UNA TASK SE ACTUALICEN LAS PENDIENTES
+    const taskArray = await getTasks();
+    tasks.tasks = taskArray;
 
 };
 
