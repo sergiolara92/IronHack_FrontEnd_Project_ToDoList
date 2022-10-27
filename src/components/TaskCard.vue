@@ -45,17 +45,23 @@
 
 <script setup>
 import { ref } from 'vue';
-import { deleteTask, markUndone, markDone, updateTask } from "../api/index";
+import { deleteTask, markUndone, markDone, updateTask, getTasks } from "../api/index";
 import { defineProps } from "vue";
 
 
+import { useTaskStore } from "../store";
 
+
+
+const tasksFiltered = useTaskStore();
 
 
 const title = ref('');
 const description = ref('');
 
 const editar = ref(false);
+
+
 
 // Definimos los props que vamos a recibir en el componente
 const props = defineProps(
@@ -67,7 +73,6 @@ const props = defineProps(
 const clickDelete = (async (taskId) => {
     await deleteTask(taskId);
     window.location.reload(true);
-
 });
 
 const undone = (async (taskId) => {
@@ -122,6 +127,7 @@ window.location.reload(true);
 
 .botones button {
   font-size: 20px;
+
 }
 
 
@@ -136,6 +142,7 @@ window.location.reload(true);
   transform: scale(2); 
   text-decoration: none;
   transition: 0.3s;
+  
 }
 
 

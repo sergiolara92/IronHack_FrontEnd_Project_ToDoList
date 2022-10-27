@@ -1,6 +1,6 @@
 <template>
 
-<div class="container">
+<div class="container " style="width: 100vw">
     <form @submit.prevent="onSubmit">
         <h4>What's on your todo list?</h4>
         <input v-model="title" class="input " type="text" placeholder="title of your task">
@@ -37,7 +37,7 @@ const tasks = useTaskStore();
 
 const onSubmit = async () => {
 
-    newTask({
+    await newTask({
     user_id: authStore.id,
     title: title.value,
     description: description.value
@@ -47,7 +47,19 @@ const onSubmit = async () => {
     description.value = '';
 
     const taskArray = await getTasks();
-    tasks.tasks = taskArray;
+
+
+
+    if (router.hasRoute('todotasks')){
+        const toDoTasks = await taskArray.filter(element => {
+        if (!element.isDone) return true;
+    });
+    return tasks.tasks = toDoTasks;
+    } 
+    
+    else {
+        return tasks.tasks = taskArray;
+    }
 
 };
 

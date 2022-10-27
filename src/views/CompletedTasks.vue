@@ -1,11 +1,11 @@
 <template>
 
     <div class="section">
-        <div class="container">
+        <div class="container" style="width: 95vw">
 
             <h1 class="title">Completed Tasks</h1>
             <div class="columns is-multiline">
-                <div v-for="i in completedTasks" class="column is-12-mobile is-6-tablet is-4-desktop">
+                <div v-for="i in completedTasks" class="column is-12-mobile is-4-tablet is-3-desktop">
                     <TaskCard :task="i" />
                 </div>
             </div>

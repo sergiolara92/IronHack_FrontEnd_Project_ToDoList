@@ -1,11 +1,11 @@
 <template>
 
     <div class="section">
-        <div class="container">
+        <div class="container" style="width: 95vw">
 
             <h1 class="title">To Do Tasks</h1>
             <div class="columns is-multiline">
-                <div v-for="i in toDoTasks" class="column is-12-mobile is-6-tablet is-4-desktop">
+                <div v-for="i in toDoTasks.tasks" class="column is-12-mobile is-4-tablet is-3-desktop">
                     <TaskCard :task="i" />
                 </div>
             </div>
@@ -24,19 +24,25 @@ import { login, getTasks } from "../api/index";
 
 import TaskCard from "../components/TaskCard.vue";
 
-const toDoTasks = ref();
+import { useTaskStore } from "../store";
+
+
+
+const toDoTasks = useTaskStore();
+
 
 
 onMounted(async () => {
     const taskArray = await getTasks();
-    toDoTasks.value = await taskArray.filter(element => {
+    toDoTasks.tasks = await taskArray.filter(element => {
         if (!element.isDone) return true;
     });
-    console.log('tareas pendientes', await toDoTasks.value);
+    console.log('tareas pendientes', toDoTasks.tasks);
 
 });
 </script>
 
 
 <style scoped>
+
 </style>
