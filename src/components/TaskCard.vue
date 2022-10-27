@@ -1,44 +1,58 @@
 <template>
 
-  <div v-if="!task.isDone" class="card">
+<div v-if="!task.isDone" class="card">
+  <header class="card-header" v-if="!editar">
+    <p class="card-header-title ">
+      {{ task.title }}
+    </p>
+  </header>
+  <header class="card-header" v-else>
+    <input v-model="task.title" class="input " type="text" placeholder="title of your task">
+  </header>
     <div class="card-content" >
       <div class="content" v-if="!editar">
-        <div class="card-title">{{ task.title }}</div>
         <div>{{ task.description }}</div>
       </div>
       <div class="content" v-else>
-        <input v-model="task.title" class="input " type="text" placeholder="title of your task">
         <input v-model="task.description" class="input " type="text" placeholder="e.g. make an app">
       </div>
-      <div class="botones">
+      <div class="card-footer botones">
         <button v-if="!editar" @click="done(task.id)" class="button is-ghost p-0 "><i class="fa-regular fa-circle-check"></i></button>
         <button v-if="!editar" @click="editar = true" class="button is-ghost p-0 "><i class="fa-regular fa-pen-to-square"></i></button>
         <button v-if="!editar" @click="clickDelete(task.id)" class="button is-ghost "><i class="fa-solid fa-trash"></i></button>
+        <button v-if="editar" @click="editar = false" class="button is-ghost " style="text-align: center"><i class="fa-solid fa-xmark"></i></button>
         <button v-if="editar" @click="update(task.id, task)" class="button is-ghost " style="text-align: center"><i class="fa-solid fa-floppy-disk"></i></button>
-
       </div>
     </div>
   </div>
 
   <div v-if="task.isDone" class="card doneCard">
-    <div class="card-content">
-      <div class="content" v-if="!editar">
-        <div class="card-title isDone ">{{ task.title }}</div>
-        <div class="isDone">{{ task.description }}</div>
+    <header class="card-header" v-if="!editar">
+    <p class="card-header-title isDone">
+      {{ task.title }}
+    </p>
+  </header>
+  <header class="card-header isDone" v-else>
+    <input v-model="task.title" class="input " type="text" placeholder="title of your task">
+  </header>
+    <div class="card-content " >
+      <div class="content isDone" v-if="!editar">
+        <div>{{ task.description }}</div>
       </div>
       <div class="content" v-else>
-        <input v-model="task.title" class="input " type="text" placeholder="title of your task">
         <input v-model="task.description" class="input " type="text" placeholder="e.g. make an app">
       </div>
-      <div class="botones">
+      <div class="card-footer botones">
         <button v-if="!editar" @click="undone(task.id)" class="button is-ghost p-0"><i class="fa-solid fa-rotate-left"></i></button>
         <button v-if="!editar" @click="editar = true" class="button is-ghost p-0 "><i class="fa-regular fa-pen-to-square"></i></button>
-        <button v-if="!editar" @click="clickDelete(task.id)" class="button is-ghost"><i class="fa-solid fa-trash"></i></button>
-        <button v-if="editar" @click="update(task.id, task)" class="button is-ghost" style="text-align: center"><i class="fa-solid fa-floppy-disk"></i></button>
-
+        <button v-if="!editar" @click="clickDelete(task.id)" class="button is-ghost "><i class="fa-solid fa-trash"></i></button>
+        <button v-if="editar" @click="editar = false" class="button is-ghost " style="text-align: center"><i class="fa-solid fa-xmark"></i></button>
+        <button v-if="editar" @click="update(task.id, task)" class="button is-ghost " style="text-align: center"><i class="fa-solid fa-floppy-disk"></i></button>
       </div>
     </div>
   </div>
+
+
 
 </template>
 
@@ -47,6 +61,7 @@
 import { ref } from 'vue';
 import { deleteTask, markUndone, markDone, updateTask, getTasks } from "../api/index";
 import { defineProps } from "vue";
+import swal from 'sweetalert';
 
 
 import { useTaskStore } from "../store";
@@ -55,9 +70,6 @@ import { useTaskStore } from "../store";
 
 const tasksFiltered = useTaskStore();
 
-
-const title = ref('');
-const description = ref('');
 
 const editar = ref(false);
 
@@ -85,16 +97,15 @@ const done = (async (taskId) => {
     await markDone(taskId);
     window.location.reload(true);
 
+
 });
 
 
 
 const update = async (taskId, task) => {
-
-await updateTask(taskId, task);
-console.log('tarea ' + taskId + ' modificada');
-window.location.reload(true);
-
+  if(task.title == '' && task.description == '') return swal("ERROR", "Can't save an empty task. Please fill at least one field.", "warning");
+  await updateTask(taskId, task);
+  window.location.reload(true);
 };
 
 </script>
@@ -139,7 +150,7 @@ window.location.reload(true);
 
 
 .botones button:hover{
-  transform: scale(2); 
+  transform: scale(1.5); 
   text-decoration: none;
   transition: 0.3s;
   

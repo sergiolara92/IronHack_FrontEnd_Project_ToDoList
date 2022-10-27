@@ -21,6 +21,7 @@ import { newTask, getTasks } from "../api/index";
 import { onMounted } from "vue";
 import { useRouter } from 'vue-router';
 import { useTaskStore } from "../store";
+import swal from 'sweetalert';
 
 const router = useRouter();
 const title = ref('');
@@ -37,6 +38,8 @@ const tasks = useTaskStore();
 
 const onSubmit = async () => {
 
+    if(title.value == '' && description.value == '') return swal("ERROR", "Can't save an empty task. Please fill at least one field.", "error");
+
     await newTask({
     user_id: authStore.id,
     title: title.value,
@@ -48,7 +51,7 @@ const onSubmit = async () => {
 
     const taskArray = await getTasks();
 
-
+    swal("OK!", "Task added to the list.", "success");
 
     if (router.hasRoute('todotasks')){
         const toDoTasks = await taskArray.filter(element => {

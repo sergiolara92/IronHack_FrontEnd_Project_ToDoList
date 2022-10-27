@@ -62,6 +62,7 @@ const authStore = useAuthStore();
 const onClick = () => {
     logOut()
     authStore.logout();
+    swal("BYE!", "Your session has been closed.", "info");
 
 };
 
@@ -69,6 +70,10 @@ const onClick = () => {
 
 </script>
 <style scoped>
+
+body {
+  background-color: darkgray;
+}
 
 .title{
     text-align: center;

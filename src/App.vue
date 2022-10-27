@@ -103,4 +103,7 @@ console.log(supabase);
 
 </script>
 <style scoped>
+
+
+
 </style>
