@@ -83,12 +83,12 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
   <p>by. Sergio Lara </p>
   <br>
   <a href="https://www.linkedin.com/in/sergiolarademarcos/" target="_blank">
-    <img height="30" src="../assets/linkedin.png" alt="LinkedIn">
+    <img class="enlaces" src="../assets/linkedin.png" alt="LinkedIn">
   </a>
   <a href="https://github.com/sergiolara92" target="_blank">
-    <img height="30" src="../assets/github.png" alt="github">
+    <img class="enlaces" src="../assets/github.png" alt="github">
   </a>
-  
+
   <br>
 
 
@@ -192,6 +192,11 @@ p {
   height:20vh;
   text-align:center;
   background-color: white;
+}
+
+.enlaces {
+  height: 30px;
+  width: 30px;
 }
 
 /* Animation */
