@@ -79,12 +79,9 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 <!--Header ends-->
 
 <!--Content starts-->
-<div class="content flex">
-  <p>by. Sergio Lara </p>
-  <br> 
-</div>
-
-<div class="content flex">
+<div class="content">
+  <p>by. Sergio Lara </p> 
+  <div class="flex">
   <a href="https://www.linkedin.com/in/sergiolarademarcos/" target="_blank">
     <img class="enlaces" src="../assets/linkedin.png" alt="LinkedIn">
   </a>
@@ -92,8 +89,10 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
   <a href="https://github.com/sergiolara92" target="_blank">
     <img class="enlaces" src="../assets/github.png" alt="github">
   </a>
-  <br>  
 </div>
+</div>
+
+
 <!--Content ends-->
 </template>
 
