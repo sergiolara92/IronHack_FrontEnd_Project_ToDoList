@@ -28,6 +28,6 @@ export default defineConfig({
         }
     },
     server: {
-        base: process.env.NODE_ENV === 'production' ? '/TaskAppProject/' : '/',
+        base: process.env.NODE_ENV === 'production' ? '/IronHack_FrontEnd_Project_ToDoList/' : '/',
     }
 })
