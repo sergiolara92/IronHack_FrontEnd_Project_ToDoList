@@ -9,4 +9,4 @@ El objetivo principal de este proyecto es asegurar que la aplicación funcione c
 3. La aplicación debe permitir: a) Añadir nuevas tareas. b) Editar las tareas existentes. c) Marcar las tareas como completas/incompletas. d) Eliminar las tareas existentes (tanto completas como incompletas).
 4. La aplicación debe estar desplegada en línea usando GitHub Pages:
 https://sergiolara92.github.io/IronHack_FrontEnd_Project_ToDoList/
-
+Para poder usar la aplicación primero hay que registrarse. Puedes registrarte con tu email o se puede usar el usuario invitado ihs07118@nezid.com y contraseña 147258369.
