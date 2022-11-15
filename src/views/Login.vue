@@ -81,18 +81,18 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 <!--Content starts-->
 <div class="content flex">
   <p>by. Sergio Lara </p>
-  <br>
+  <br> 
+</div>
+
+<div class="content flex">
   <a href="https://www.linkedin.com/in/sergiolarademarcos/" target="_blank">
     <img class="enlaces" src="../assets/linkedin.png" alt="LinkedIn">
   </a>
+  <p> </p>
   <a href="https://github.com/sergiolara92" target="_blank">
     <img class="enlaces" src="../assets/github.png" alt="github">
   </a>
-
-  <br>
-
-
-  
+  <br>  
 </div>
 <!--Content ends-->
 </template>
