@@ -1,15 +1,10 @@
-empezar por la vista de login
+PROYECTO FINAL IRONHACK
 
+Como proyecto final he construido una aplicación con un CRUD tipo “to-do list” con Vue.js. La app está vinculada a la base de datos Supabase donde se almacenan los datos de los usuarios y sus respectivas tareas. También he utilizado Vite como herramienta de construcción para compilar el código y proporcionar un servidor de desarrollo.
 
-##TAREAS PENDIENTES
+El objetivo principal de este proyecto es asegurar que la aplicación funcione correctamente y cumpla los siguientes requisitos:
 
-1 - instalar pinia y preparar las stores de auth y task
-2 - pensar cuantas rutas vamos a tener, ej Login, Registro, Home-Tasks(donde veremos los task y podremos crear y borrar los task), Login y registro podrian ser children de Auth
-3 - Completar el formulario de registro y comprobar que se registra el usuario en supabase
-4 -  completar el formulario login y comprobar que nos retorna el id del usuario, guardar el id en el store de auth.
-5 - Home, mostrar los task del usuario.
-6 - Poder crear task y ver que se inserta en supabase
-7 - Poder borrar tasks y ver que se borran en supabase.
-8 - Poder modificar tasks y que se modifiquen en supabase.
-9 - comprobar que las task son distintas en cada usuario.
-10 - css y bonus
+Presentar una pantalla de registro/inscripción (Sign up/Log in) que se muestre cuando el usuario no haya iniciado sesión: a) El formulario de registro (Sign up) solicita al usuario una dirección de correo electrónico, una contraseña y la confirmación de la misma. b) El formulario de inicio de sesión (Log in) solicita un correo electrónico y la contraseña del usuario.
+Tras el inicio de sesión, la aplicación debe obtener y mostrar todas las tareas de la lista de tareas del usuario conectado almacenada en Supabase.
+La aplicación debe permitir: a) Añadir nuevas tareas. b) Editar las tareas existentes. c) Marcar las tareas como completas/incompletas. d) Eliminar las tareas existentes (tanto completas como incompletas).
+La aplicación debe estar desplegada en línea usando GitHub Pages:# IronHack_FrontEnd_Project_ToDoList
